@@ -15,4 +15,8 @@ export class AppComponent {
     tel: new FormControl(new MyTel('', '', '')),
     name: new FormControl(''),
   });
+
+  clearForm() {
+    this.form.setValue({ tel: new MyTel('', '', ''), name: '' });
+  }
 }
