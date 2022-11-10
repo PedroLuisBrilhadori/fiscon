@@ -1,0 +1,23 @@
+.my-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-inputs {
+  width: 100%;
+}
+
+.my-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  margin-top: 50px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
