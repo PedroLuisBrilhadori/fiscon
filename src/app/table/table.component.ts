@@ -42,6 +42,9 @@ export class TableComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
+  @Output('removeElement') removeElementEmmiter: EventEmitter<any> =
+    new EventEmitter<any>();
+
   private _columnsToDisplay: string[] = [];
 
   private _displayedColumns: TableColumnModel[];
@@ -72,16 +75,17 @@ export class TableComponent implements AfterViewInit {
     };
 
     this._dataSource.sort = this.sort;
+
+    this._cdr.detectChanges();
   }
 
   renderRows() {
-    this._dataSource.data = this.dataSource;
+    this._dataSource.data = this._dataSource.data;
+    this.table.renderRows();
   }
 
   removeElement(element) {
-    this._dataSource.data = this._dataSource.data.filter(
-      (data) => element?.tel !== data?.tel
-    );
+    this.removeElementEmmiter.emit(element);
   }
 
   applyFilter(event: Event) {

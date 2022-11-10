@@ -54,7 +54,15 @@ export class AppComponent {
       id: Math.random().toString(16).slice(2),
     });
 
+    console.log(this.table.dataSource);
     this.table.renderRows();
+    console.log(this.table.dataSource);
+  }
+
+  removeUser(element: any) {
+    this.dataSource = this.dataSource.filter(
+      (data) => element?.id !== data?.id
+    );
   }
 
   validInput() {

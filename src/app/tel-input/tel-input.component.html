@@ -6,6 +6,7 @@
   (focusin)="onFocusIn($event)"
   (focusout)="onFocusOut($event)"
 >
+  <span class="example-tel-input-spacer">(</span>
   <input
     class="example-tel-input-element"
     formControlName="area"
@@ -15,7 +16,7 @@
     (input)="_handleInput(parts.controls.area, exchange)"
     #area
   />
-  <span class="example-tel-input-spacer">&ndash;</span>
+  <span class="example-tel-input-spacer">)</span>
   <input
     class="example-tel-input-element"
     formControlName="exchange"
