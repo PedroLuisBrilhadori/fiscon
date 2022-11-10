@@ -24,12 +24,7 @@ export class AppComponent {
     },
   ];
 
-  dataSource: { name: string; tel: string }[] = [
-    { tel: '1', name: 'ddddddd' },
-    { tel: '2', name: 'aaaaa' },
-    { tel: '3', name: 'bbbbb' },
-    { tel: '4', name: 'cccccc' },
-  ];
+  dataSource: { name: string; tel: string; id: string }[] = [];
 
   form: FormGroup = new FormGroup({
     tel: new FormControl(new MyTel('', '', ''), [Validators.required]),
@@ -50,6 +45,7 @@ export class AppComponent {
     this.dataSource.push({
       name,
       tel: `(${tel?.area}) ${tel?.exchange}-${tel?.subscriber}`,
+      id: Math.random().toString(16).slice(2),
     });
 
     this.table.renderRows();

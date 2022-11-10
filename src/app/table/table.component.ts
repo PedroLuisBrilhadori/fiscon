@@ -57,7 +57,7 @@ export class TableComponent implements AfterViewInit {
    * @hidden
    * Inicializa o dataSouce com o tipo MatTableDataSource
    */
-  _dataSource = new MatTableDataSource<any[]>([]);
+  _dataSource = new MatTableDataSource<any>([]);
 
   ngAfterViewInit() {
     this._dataSource.sortingDataAccessor = (item, property) => {
@@ -75,12 +75,13 @@ export class TableComponent implements AfterViewInit {
   }
 
   renderRows() {
-    this.table.renderRows();
+    this._dataSource.data = this.dataSource;
   }
 
-  removeData() {
-    this._dataSource.data.pop();
-    this.table.renderRows();
+  removeElement(element) {
+    this._dataSource.data = this._dataSource.data.filter(
+      (data) => element?.tel !== data?.tel
+    );
   }
 
   applyFilter(event: Event) {
