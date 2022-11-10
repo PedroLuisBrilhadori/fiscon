@@ -1,5 +1,6 @@
+import { ViewChild } from '@angular/core';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 export class TableColumnModel {
   name: string;
@@ -28,8 +29,7 @@ export class TableComponent {
   @Input('displayedColumns')
   displayedColumns: TableColumnModel[];
 
-  @Output('selected')
-  selected: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild(MatTable) table: MatTable<any[]>;
 
   private _columnsToDisplay: string[] = [];
 
@@ -56,7 +56,7 @@ export class TableComponent {
     }
   }
 
-  selectRow(row: any) {
-    this.selected.emit(row);
+  renderRows() {
+    this.table.renderRows();
   }
 }
