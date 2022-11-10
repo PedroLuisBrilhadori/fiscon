@@ -44,7 +44,7 @@ export class TableComponent {
    * @hidden
    * Inicializa o dataSouce com o tipo MatTableDataSource
    */
-  _dataSource = new MatTableDataSource<any>([]);
+  _dataSource = new MatTableDataSource<any[]>([]);
 
   ngOnInit() {
     if (this.displayedColumns === undefined) {
@@ -58,5 +58,15 @@ export class TableComponent {
 
   renderRows() {
     this.table.renderRows();
+  }
+
+  removeData() {
+    this._dataSource.data.pop();
+    this.table.renderRows();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this._dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

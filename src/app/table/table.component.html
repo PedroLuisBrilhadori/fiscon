@@ -1,3 +1,8 @@
+<mat-form-field class="filter" appearance="standard">
+  <mat-label>Filtros</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input />
+</mat-form-field>
+
 <table mat-table [dataSource]="_dataSource" class="mat-elevation-z8">
   <ng-container
     [matColumnDef]="column.displayName"
@@ -5,7 +10,7 @@
   >
     <th mat-header-cell *matHeaderCellDef>{{ column.displayName }}</th>
 
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let element" (click)="removeData()">
       <span>
         {{ element[column.name] }}
       </span>
