@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { MyTel } from './tel-input/tel-input.component';
 import { TableColumnModel, TableComponent } from './table/table.component';
 import { ViewChild } from '@angular/core';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +33,11 @@ export class AppComponent {
     name: new FormControl('', [Validators.required]),
   });
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.dialog.open(DialogComponent);
+  }
 
   clearForm() {
     this.form.setValue({ tel: new MyTel('', '', ''), name: '' });
