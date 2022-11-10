@@ -38,6 +38,11 @@ export class TableComponent implements AfterViewInit {
     return this._displayedColumns;
   }
 
+  @Input('sortingDataAccessor') sortingDataAccessor: (
+    data: any,
+    sortHeaderId: string
+  ) => string | number;
+
   @ViewChild(MatTable) table: MatTable<any[]>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -63,16 +68,7 @@ export class TableComponent implements AfterViewInit {
   _dataSource = new MatTableDataSource<any>([]);
 
   ngAfterViewInit() {
-    this._dataSource.sortingDataAccessor = (item, property) => {
-      switch (property) {
-        case 'Nome':
-          return item['name'];
-        case 'Telefone':
-          return item['tel'];
-        default:
-          return item[property];
-      }
-    };
+    this._dataSource.sortingDataAccessor = this.sortingDataAccessor;
 
     this._dataSource.sort = this.sort;
 

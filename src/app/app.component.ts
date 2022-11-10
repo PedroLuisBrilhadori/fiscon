@@ -39,6 +39,17 @@ export class AppComponent {
     this.dialog.open(DialogComponent);
   }
 
+  sortingDataAccessor(item, property) {
+    switch (property) {
+      case 'Nome':
+        return item['name'];
+      case 'Telefone':
+        return item['tel'];
+      default:
+        return item[property];
+    }
+  }
+
   clearForm() {
     this.form.setValue({ tel: new MyTel('', '', ''), name: '' });
   }
