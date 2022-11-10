@@ -3,12 +3,14 @@
   <input matInput (keyup)="applyFilter($event)" #input />
 </mat-form-field>
 
-<table mat-table [dataSource]="_dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="_dataSource" class="mat-elevation-z8" matSort>
   <ng-container
     [matColumnDef]="column.displayName"
     *ngFor="let column of displayedColumns"
   >
-    <th mat-header-cell *matHeaderCellDef>{{ column.displayName }}</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ column.displayName }}
+    </th>
 
     <td mat-cell *matCellDef="let element" (click)="removeData()">
       <span>

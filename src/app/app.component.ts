@@ -24,7 +24,12 @@ export class AppComponent {
     },
   ];
 
-  dataSource: { name: string; tel: string }[] = [];
+  dataSource: { name: string; tel: string }[] = [
+    { tel: '1', name: 'ddddddd' },
+    { tel: '2', name: 'aaaaa' },
+    { tel: '3', name: 'bbbbb' },
+    { tel: '4', name: 'cccccc' },
+  ];
 
   form: FormGroup = new FormGroup({
     tel: new FormControl(new MyTel('', '', ''), [Validators.required]),
